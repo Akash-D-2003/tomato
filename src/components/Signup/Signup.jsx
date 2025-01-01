@@ -46,11 +46,10 @@ const Signup = () => {
           let id = response.data.idToken;
           if (id) {
             setUserToken(id);
-            setAuth(true);
           }
         })
         .catch((e) => {
-          console.log("error", e);
+          // console.log("error", e);
           if (e.response.data.error.message == "EMAIL_EXISTS") {
             setError({ ...errors, customError: "Email Already Exist Please enter valid Email" });
           } else if (String(e.response.data.error.message).includes("WEAK_PASSWORD")) {
@@ -78,7 +77,12 @@ const Signup = () => {
 
   return (
     <div className="h-[100vh] w-full flex items-center justify-center">
-      <div className="w-96 shadow-lg p-5">
+      <div className="w-96 shadow-lg max-sm:mx-3  p-5 relative">
+        <div className="absolute top-6 right-1 w-8">
+          <NavLink to={"/"}>
+            <img src={assets.cross_icon} alt="" />
+          </NavLink>
+        </div>
         <h2 className="text-center text-[18px] font-bold mb-7">Sign up</h2>
 
         {errors.customError === null || (

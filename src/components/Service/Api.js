@@ -18,3 +18,10 @@ export const signUpData = (input) => {
   };
   return axios.post(registerApiUrl, data);
 };
+export const loginData = (input) => {
+  let loginData = {
+    email: input.email,
+    password: input.password,
+  };
+  return axios.post(loginApiUrl, loginData);
+};
